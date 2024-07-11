@@ -8,15 +8,16 @@
 import UIKit
 
 class ViewController: UIViewController {
-
+    
+    var slidersArray : [UISlider] = []
+    var labelesArray : [UILabel] = []
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        makeAverage(redSlider)
-        makeAverage(greenSlider)
-        makeAverage(blueSlider)
+        slidersArray = [redSlider, greenSlider, blueSlider]
+        labelesArray = [redLabel, greenLabel, blueLabel]
+        makeAverage()
         changeBackgroundView()
-        updateAllLabeles()
     }
     
     @IBOutlet weak var redLabel: UILabel!
@@ -33,6 +34,8 @@ class ViewController: UIViewController {
     
     @IBOutlet weak var changableView: UIView!
     
+    
+    
     @IBAction func redSlider(_ sender: UISlider) {
         changeBackgroundView()
         updateLabel(redLabel, redSlider)
@@ -46,27 +49,21 @@ class ViewController: UIViewController {
     
     @IBAction func blueSlider(_ sender: UISlider) {
         changeBackgroundView()
-       updateLabel(blueLabel, blueSlider)
+        updateLabel(blueLabel, blueSlider)
     }
     
     @IBAction func minimumButtonTupped(_ sender: Any) {
-        makeMinimum(redSlider)
-        makeMinimum(greenSlider)
-        makeMinimum(blueSlider)
+        makeMinimum()
         changeBackgroundView()
     }
     
     @IBAction func mediumButtonTupped(_ sender: Any) {
-        makeAverage(redSlider)
-        makeAverage(greenSlider)
-        makeAverage(blueSlider)
+        makeAverage()
         changeBackgroundView()
     }
     
     @IBAction func maximumButtonTupped(_ sender: Any) {
-        makeMaximum(redSlider)
-        makeMaximum(greenSlider)
-        makeMaximum(blueSlider)
+        makeMaximum()
         changeBackgroundView()
     }
     
@@ -74,36 +71,39 @@ class ViewController: UIViewController {
         label.text = "\(Int(labeledSlider.value * 255))"
     }
     
-    func updateAllLabeles() {
-        updateLabel(redLabel, redSlider)
-        updateLabel(greenLabel, greenSlider)
-        updateLabel(blueLabel, blueSlider)
+    func makeMaximum() {
+        for slider in slidersArray {
+            slider.value = slider.maximumValue
+            for label in labelesArray {
+                updateLabel(label, slider)
+            }
+        }
     }
     
-    func makeMaximum(_ slider : UISlider) {
-        slider.value = slider.maximumValue
-        
-        updateAllLabeles()
+    func makeMinimum() {
+        for slider in slidersArray {
+            slider.value = slider.minimumValue
+            for label in labelesArray {
+                updateLabel(label, slider)
+            }
+        }
     }
     
-    func makeMinimum(_ slider : UISlider) {
-        slider.value = slider.minimumValue
-        
-        updateAllLabeles()
-    }
-    
-    func makeAverage(_ slider : UISlider) {
-        var average = (slider.maximumValue - slider.minimumValue) / 2 + slider.minimumValue
-        slider.value = average
-        
-        updateAllLabeles()
+    func makeAverage() {
+        for slider in slidersArray {
+            let average = (slider.maximumValue - slider.minimumValue) / 2 + slider.minimumValue
+            slider.value = average
+            for label in labelesArray {
+                updateLabel(label, slider)
+            }
+        }
     }
     
     func changeBackgroundView() {
-        var red = CGFloat(redSlider.value)
-            var green = CGFloat(greenSlider.value)
-            var blue = CGFloat(blueSlider.value)
-       updateLabel(redLabel, redSlider)
+        let red = CGFloat(redSlider.value)
+        let green = CGFloat(greenSlider.value)
+        let blue = CGFloat(blueSlider.value)
+        updateLabel(redLabel, redSlider)
         changableView.backgroundColor = UIColor(red: red, green: green, blue: blue, alpha: 1)
     }
     
