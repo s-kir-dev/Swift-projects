@@ -50,12 +50,12 @@ class ViewController: UIViewController {
     /*
      code
      code
-     mistake
+     fixed mistake
      */
     
     
     //i made mistake and must to fix it
-    
+    // i fixed that mistake everithing should be ok
     
     // i make something
 
