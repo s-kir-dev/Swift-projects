@@ -45,11 +45,16 @@ class ViewController: UIViewController {
         code4
              */
     
-    //appstore
+    //appstore 1
+    
+    /*
+     code
+     code
+     mistake
+     */
     
     
-    //code branch version2.0
-    //before these lines are 2 mistakes which were before release in branch version2 and main
+    //i made mistake and must to fix it
 
 }
 
