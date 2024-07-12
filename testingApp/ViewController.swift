@@ -24,9 +24,9 @@ class ViewController: UIViewController {
 //code2new
         
     /*
-    code2mistake
+    code2fixed
     code2new
-    code2mistake
+    code2fixed
          */
     
     //code3
