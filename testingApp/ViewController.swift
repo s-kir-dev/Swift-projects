@@ -24,9 +24,9 @@ class ViewController: UIViewController {
 //code2new
         
     /*
+    code2mistake
     code2new
-    code2new
-    code2new
+    code2mistake
          */
     
     //code3
@@ -44,6 +44,9 @@ class ViewController: UIViewController {
         code4
         code4
              */
+    
+    //appstore
+    
 
 }
 
