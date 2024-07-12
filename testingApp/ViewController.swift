@@ -47,6 +47,9 @@ class ViewController: UIViewController {
     
     //appstore
     
+    
+    //code branch version2.0
+    //before these lines are 2 mistakes which were before release in branch version2 and main
 
 }
 
